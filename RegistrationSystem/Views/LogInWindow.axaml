@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+        x:Class="RegistrationSystem.Views.LogInWindow"
+		Height="500" Width="400"
+		Background="{DynamicResource PriClr}"
+        Title="LogInWindow">
+
+	<DockPanel>
+		<TextBlock Text="Login" Foreground="#faeed6" FontFamily="avares://Avalonia.Fonts.Inter#Inter" DockPanel.Dock="Top"></TextBlock>
+		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+			<TextBlock Text="Username" Foreground="{DynamicResource SecClr}" FontFamily="avares://Avalonia.Fonts.Inter#Inter"></TextBlock>
+			<TextBox Width="200" Margin="0,5,0,10"  Watermark="Enter Username" Foreground="{DynamicResource TextCLr}" Background="{DynamicResource SecClr}"></TextBox>
+			<TextBlock Text="Password" Foreground="{DynamicResource SecClr}" FontFamily="avares://Avalonia.Fonts.Inter#Inter"></TextBlock>
+			<TextBox Width="200" Margin="0,5,0,10" Watermark="Enter Password" Foreground="{DynamicResource TextCLr}" FontSize="12" Background="{DynamicResource SecClr}"></TextBox>
+			<Button Content="Log In" Width="200" Background="#ffca48" Foreground="#4c6b5c" CornerRadius="5"></Button>
+			</StackPanel>
+	</DockPanel>
+	
+	
+	
+
+	
+	
+ 
+</Window>

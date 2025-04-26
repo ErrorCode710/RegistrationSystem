@@ -1,0 +1,22 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RegistrationSystem.App"
+             xmlns:local="using:RegistrationSystem"
+             xmlns:sty="using:FluentAvalonia.Styling"
+             RequestedThemeVariant="Default">
+
+	<Application.Resources>
+		<SolidColorBrush x:Key="PriClr" Color="#4c6b5c"/>
+		<SolidColorBrush x:Key="SecClr" Color="#faeed6"/>
+		<SolidColorBrush x:Key="TextClr" Color="#bfbbb3"/>
+	</Application.Resources>
+
+	<Application.Styles>
+		<sty:FluentAvaloniaTheme PreferUserAccentColor="True"/>
+	</Application.Styles>
+
+	<Application.DataTemplates>
+		<local:ViewLocator/>
+	</Application.DataTemplates>
+
+</Application>
