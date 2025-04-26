@@ -4,25 +4,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
         x:Class="RegistrationSystem.Views.LogInWindow"
-		Height="500" Width="400"
-		Background="{DynamicResource PriClr}"
-        Title="LogInWindow">
+        xmlns:sty="using:FluentAvalonia.Styling"
+        xmlns:fa="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
+        Height="500" Width="400"
+        Title="LogInWindow"
+		SystemDecorations="None"
+        ExtendClientAreaToDecorationsHint="True">
 
-	<DockPanel>
-		<TextBlock Text="Login" Foreground="#faeed6" FontFamily="avares://Avalonia.Fonts.Inter#Inter" DockPanel.Dock="Top"></TextBlock>
-		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-			<TextBlock Text="Username" Foreground="{DynamicResource SecClr}" FontFamily="avares://Avalonia.Fonts.Inter#Inter"></TextBlock>
-			<TextBox Width="200" Margin="0,5,0,10"  Watermark="Enter Username" Foreground="{DynamicResource TextCLr}" Background="{DynamicResource SecClr}"></TextBox>
-			<TextBlock Text="Password" Foreground="{DynamicResource SecClr}" FontFamily="avares://Avalonia.Fonts.Inter#Inter"></TextBlock>
-			<TextBox Width="200" Margin="0,5,0,10" Watermark="Enter Password" Foreground="{DynamicResource TextCLr}" FontSize="12" Background="{DynamicResource SecClr}"></TextBox>
-			<Button Content="Log In" Width="200" Background="#ffca48" Foreground="#4c6b5c" CornerRadius="5"></Button>
-			</StackPanel>
-	</DockPanel>
-	
-	
-	
+	<!-- Border with rounded corners and background color -->
+	<Grid>
+		<TextBlock Text="Log In" FontSize="40"  TextAlignment="Center"></TextBlock>
+			<Grid HorizontalAlignment="Center" VerticalAlignment="Center" RowDefinitions="*,*,*,*" Background="">
+				
+				<TextBox Grid.Row="0" Margin="0,5,0,10" Watermark="Enter Username" Foreground="{DynamicResource TextCLr}" Background="Transparent"/>
+				<TextBox Grid.Row="1" Width="325" Margin="0,5,0,10" Watermark="Enter Password" Foreground="{DynamicResource TextCLr}" Background="Transparent"/>
 
-	
-	
- 
+				<Button  Grid.Row="2"  Content="Log In" Width="325" Height="40" Background="{DynamicResource AccClr}" Foreground="White" CornerRadius="5"/>
+			</Grid>
+		</Grid>
+		
 </Window>

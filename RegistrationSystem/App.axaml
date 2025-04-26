@@ -8,7 +8,8 @@
 	<Application.Resources>
 		<SolidColorBrush x:Key="PriClr" Color="#4c6b5c"/>
 		<SolidColorBrush x:Key="SecClr" Color="#faeed6"/>
-		<SolidColorBrush x:Key="TextClr" Color="#bfbbb3"/>
+		<SolidColorBrush x:Key="TextClr" Color="#666666"/>
+		<SolidColorBrush x:Key="AccClr" Color="#0088cc"/>
 	</Application.Resources>
 
 	<Application.Styles>
