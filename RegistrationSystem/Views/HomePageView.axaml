@@ -3,6 +3,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="RegistrationSystem.HomePageView">
-  Welcome to Avalonia!
+             x:Class="RegistrationSystem.Views.HomePageView">
+
+	<Grid>
+		<Grid RowDefinitions="*,2.5*">
+			<Grid Grid.Row="0" Background="#ececec">
+				
+					<TextBlock Text="Welcome back, Jhunrey" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontFamily="{DynamicResource RobotoR}" FontSize="15"></TextBlock>
+				
+			</Grid>
+			<Grid  Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="200">
+				<Border Background="{DynamicResource AccClr}" CornerRadius="25">
+			
+				</Border>
+				<TextBlock Text="Total User" Foreground="White" FontSize="24" TextAlignment="Center" Margin="20"> </TextBlock>
+				<TextBlock Text="15" Foreground="White" FontSize="24" TextAlignment="Center" VerticalAlignment="Bottom" Margin="20"> </TextBlock>
+
+				<PathIcon Data="{DynamicResource person_regular}" Width="50" Height="120" Foreground="white"></PathIcon>
+				
+			</Grid>
+				
+		</Grid>
+	</Grid>
 </UserControl>

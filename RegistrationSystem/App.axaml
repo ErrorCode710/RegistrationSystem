@@ -27,6 +27,8 @@
 			<Setter Property="FontFamily" Value="{DynamicResource RobotoR}"/>
 			<Setter Property="Foreground" Value="{DynamicResource WatermarkClr}"/>
 		</Style>
+		
+		<StyleInclude Source="avares://RegistrationSystem/Assets/Icons.axaml"></StyleInclude>
 	</Application.Styles>
 
 	<Application.DataTemplates>
