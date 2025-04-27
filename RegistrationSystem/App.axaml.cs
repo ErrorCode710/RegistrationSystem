@@ -38,7 +38,7 @@ public partial class App : Application
             //is pass a true value the mainWindow will run 
             // and the log in page will close
 
-            Boolean isLogin = true;
+            
             var login = desktop.MainWindow = new LogInWindow();
             login.Show();
             
