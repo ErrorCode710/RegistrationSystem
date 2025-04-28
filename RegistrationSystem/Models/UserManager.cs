@@ -83,5 +83,9 @@ namespace RegistrationSystem.Models
             } 
 
         }
+        public List<Userdb> GetAllUsers()
+        {
+            return users;
+        }
     }
 }

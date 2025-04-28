@@ -29,6 +29,7 @@
 		</Style>
 		
 		<StyleInclude Source="avares://RegistrationSystem/Assets/Icons.axaml"></StyleInclude>
+		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"></StyleInclude>
 	</Application.Styles>
 
 	<Application.DataTemplates>
