@@ -10,7 +10,7 @@ namespace RegistrationSystem.Models
    public class UserManager
     {
         private List<Userdb> users;
-
+        private int IdCounter = 1;
         public UserManager() {
 
             users = new List<Userdb>();
@@ -23,6 +23,7 @@ namespace RegistrationSystem.Models
             {
                 var newUser = new Userdb
                 {
+                    Id = 0,
                     Role = "admin",
                     FirstName = "Jhun Rey",
                     LastName = "Canasa",
@@ -39,6 +40,7 @@ namespace RegistrationSystem.Models
         {
             var newUser = new Userdb
             {
+                Id = IdCounter++,
                 Role = "user",
                 FirstName = firstName,
                 LastName = lastName,
@@ -50,6 +52,17 @@ namespace RegistrationSystem.Models
 
             users.Add(newUser);
             
+        }
+
+        public void DeleteUser(int UserId)
+        {
+            var userToRemove = users.FirstOrDefault(u => u.Id == UserId );
+
+            if (userToRemove != null) {
+            
+             users.Remove(userToRemove);
+            }
+           
         }
        
         public bool CheckUser(string userName, string passWord)
@@ -79,7 +92,7 @@ namespace RegistrationSystem.Models
         public void ListAllUser() {
 
             foreach (var user in users) {
-                Debug.WriteLine($" {user.Role}{user.FirstName}");
+                Debug.WriteLine($" {user.Role} {user.FirstName} {user.Id}");
             } 
 
         }

@@ -1,14 +1,75 @@
 <UserControl xmlns="https://github.com/avaloniaui"
+			
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			   xmlns:vm="clr-namespace:RegistrationSystem.ViewModels"
+             xmlns:vm="clr-namespace:RegistrationSystem.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="RegistrationSystem.Views.UserPageView"
-			 x:DataType="vm:UserPageViewModel"
-			 >
+             x:DataType="vm:UserPageViewModel">
+
+	<UserControl.Styles>
+		
+		<Style Selector="DataGridColumnHeader">
+			<Setter Property="FontSize" Value="8"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontFamily" Value="{DynamicResource RobotoM}"/>
+			<Setter Property="Foreground" Value="#65758c"/>
+			
+			<Setter Property="Padding" Value="8"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		</Style>
+		<Style Selector="DataGridCell">
+			<Setter Property="FontSize" Value="10"></Setter>
+			<Setter Property="FontFamily" Value="{DynamicResource RobotR}"></Setter>
+			
+		</Style>
+	</UserControl.Styles>
+
+	<StackPanel Margin="20">
+		<TextBlock FontSize="24"
+                   FontFamily="{DynamicResource RobotoM}"
+                   Text="User Management"
+                   TextAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+		<DataGrid Margin="20"
+                  ItemsSource="{Binding Users}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  BorderThickness="1"
+                  BorderBrush="Gray"
+                  HorizontalAlignment="Stretch"
+                  GridLinesVisibility="Horizontal"
+                  FontFamily="{DynamicResource RobotoR}"
+                  RowBackground="Transparent">
+
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="*"/>
+				<DataGridTextColumn Header="Middle Name" Binding="{Binding MiddleName}" Width="*"/>
+				<DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="*"/>
+				<DataGridTextColumn Header="Username" Binding="{Binding UserName}" Width="*"/>
+				<DataGridTextColumn Header="Password" Binding="{Binding Password}" Width="*"/>
+				<DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*"/>
+				<DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="*"/>
 
 
-	<DataGrid Margin="20" ItemsSource="{Binding Users}"  AutoGenerateColumns="True"
-			  IsReadOnly="True" GridLinesVisibility="All" BorderThickness="1" BorderBrush="Gray"></DataGrid>
+				<DataGridTemplateColumn Header="Actions" Width="Auto">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<StackPanel Orientation="Horizontal" Spacing="5">
+								<Button Content="Edit"
+										
+										Width="60"/>
+								<Button Content="Delete"
+       
+        Width="60"/>
+
+							</StackPanel>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+	</StackPanel>
 </UserControl>

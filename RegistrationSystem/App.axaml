@@ -3,7 +3,7 @@
              x:Class="RegistrationSystem.App"
              xmlns:local="using:RegistrationSystem"
              xmlns:sty="using:FluentAvalonia.Styling"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Light">
 
 	<Application.Resources>
 		<SolidColorBrush x:Key="PriClr" Color="#4c6b5c"/>
@@ -29,7 +29,8 @@
 		</Style>
 		
 		<StyleInclude Source="avares://RegistrationSystem/Assets/Icons.axaml"></StyleInclude>
-		<StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"></StyleInclude>
+		
+		
 	</Application.Styles>
 
 	<Application.DataTemplates>
