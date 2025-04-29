@@ -29,29 +29,33 @@ public partial class LogInWindow : AppWindow
     }
     private async Task logInValidationAsync()
     {
+        // we need to create an indicator if th
         string inputUserName = UserName.Text;
         string inputPassword = Password.Text;
+        
 
         var userValid = new UserManager();
         var user = userValid.GetUser(inputUserName, inputPassword);
 
+        string email = user?.Email;
+        string firstName = user?.FirstName;
+        string lastName = user?.LastName;
+        string middleName = user?.MiddleName;
+        string role = user?.Role;
+        string password = user?.Password;
+        string userName = user?.UserName;
 
         bool isUserValid = userValid.CheckUser(inputUserName, inputPassword);
 
-        //if (isUserValid)
-        //{
-        //    onLoginSucces();
-        //    Debug.WriteLine("Log in successfully");
-        //}
-        //else { Debug.WriteLine("Log in Invalid"); }
+       
 
         if (user != null) {
             if (user.Role == "admin")
             {
-                onLoginSucces("admin");
+                onLoginSucces(firstName, lastName, middleName, userName, email, password, role);
             }
             else {
-                onLoginSucces("user");
+                onLoginSucces(firstName, lastName, middleName, userName, email, password, role);
             }
         
         } else
@@ -65,7 +69,7 @@ public partial class LogInWindow : AppWindow
        
         
     }
-    private void onLoginSucces(string Role)
+    private void onLoginSucces(string firstname ,string lastname, string middlename, string username, string email, string password, string Role)
     {
          if(Role == "admin") {
             var mainWindow = new MainWindow();
@@ -73,7 +77,9 @@ public partial class LogInWindow : AppWindow
             this.Close();
         } else
         {
-            
+            var mainWindow = new UserInfo(firstname, username, middlename, username,email,password);
+            mainWindow.Show();
+            this.Close();
         }
         // if the user is addmin show this admin panel if not show the log in sucess page and box
         

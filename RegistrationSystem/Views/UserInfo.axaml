@@ -1,0 +1,118 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="650"
+		Width="400"
+		Height="650"
+        x:Class="RegistrationSystem.UserInfo"
+        Title="UserInfo">
+	<Window.Styles>
+		<!-- Minimalistic Button Style -->
+		<Style Selector="Button">
+			<Setter Property="Padding" Value="10"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Background" Value="{DynamicResource AccClr}"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Cursor" Value="Hand"/>
+		</Style>
+
+		<!-- TextBlock Style for Field Labels -->
+		<Style Selector="TextBlock">
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Margin" Value="0,5"/>
+			<Setter Property="Foreground" Value="#333"/>
+		</Style>
+	</Window.Styles>
+	
+	<Grid RowDefinitions="*,2.5*">
+		<Grid Grid.Row="0">
+			<Border Background="{DynamicResource AccClr}" Width="150" Height="150" Margin="0,50" CornerRadius="100">
+				<Border Background="White" Width="140" Height="140" CornerRadius="100">
+					<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+						<Border Background="Pink" Width="30" Height="30" CornerRadius="15" HorizontalAlignment="Center" Margin="0,5,0,0">
+
+						</Border>
+
+						<Border Background="Pink" Width="50" Height="40" CornerRadius="25" HorizontalAlignment="Center" Margin="0,5,0,0">
+
+						</Border>
+					</StackPanel>
+				</Border>
+			</Border>
+		</Grid>
+		<Grid Grid.Row="1">
+			<StackPanel Margin="20,0">
+				<StackPanel>
+					<TextBlock FontFamily="{DynamicResource RobotoM}" Text="First Name:"/>
+					
+						<Border Background="#D8D8D8" CornerRadius="15"  >
+							<TextBlock x:Name="FirstNameText" FontFamily="{DynamicResource RobotoR}" Text="Joshua" FontSize="16" FontWeight="SemiBold" Margin="10" />
+						</Border>
+						
+					
+					
+				</StackPanel>
+				<StackPanel>
+					<TextBlock FontFamily="{DynamicResource RobotoM}" Text="Last Name:"/>
+
+					<Border Background="#D8D8D8" CornerRadius="15"  >
+						<TextBlock x:Name="LastNameText"  FontFamily="{DynamicResource RobotoR}" Text="Garcia" FontSize="16" FontWeight="SemiBold" Margin="10" />
+					</Border>
+
+
+
+				</StackPanel>
+				<StackPanel>
+					<TextBlock   FontFamily="{DynamicResource RobotoM}" Text="Middle Name:"/>
+
+					<Border Background="#D8D8D8" CornerRadius="15"  >
+						<TextBlock x:Name="MiddleNameText" FontFamily="{DynamicResource RobotoR}" Text="Ha" FontSize="16" FontWeight="SemiBold" Margin="10" />
+					</Border>
+
+
+
+				</StackPanel>
+				<StackPanel>
+					<TextBlock FontFamily="{DynamicResource RobotoM}" Text="User Name:"/>
+
+					<Border Background="#D8D8D8" CornerRadius="15"  >
+						<TextBlock x:Name="UsernameText" FontFamily="{DynamicResource RobotoR}" Text="JohnG" FontSize="16" FontWeight="SemiBold" Margin="10" />
+					</Border>
+
+
+
+				</StackPanel>
+				<StackPanel>
+					<TextBlock  FontFamily="{DynamicResource RobotoM}" Text="Email Address:"/>
+
+					<Border Background="#D8D8D8" CornerRadius="15"  >
+						<TextBlock x:Name="EmailText" FontFamily="{DynamicResource RobotoR}" Text="dksjdlja@gajdksa.cpm" FontSize="16" FontWeight="SemiBold" Margin="10" />
+					</Border>
+
+
+
+				</StackPanel>
+				<StackPanel>
+					<TextBlock  FontFamily="{DynamicResource RobotoM}" Text="Password:"/>
+
+					<Border Background="#D8D8D8" CornerRadius="15"  >
+						<TextBlock x:Name="PasswordText" FontFamily="{DynamicResource RobotoR}" Text="dksjdlja@gajdksa.cpm" FontSize="16" FontWeight="SemiBold" Margin="10" />
+					</Border>
+
+
+
+				</StackPanel>
+				<Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,20,0,0"/>
+
+			</StackPanel>
+		
+		</Grid>
+		
+		
+	</Grid>
+
+	
+</Window>

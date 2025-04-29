@@ -20,7 +20,7 @@
 		<TextBox Name="Password" Watermark="Password"/>
 		<TextBox Name="Email" Watermark="Email"/>
 
-		<ComboBox SelectedIndex="0">
+		<ComboBox x:Name="RoleComboBox" SelectedIndex="0">
 			<ComboBoxItem Content="admin"/>
 			<ComboBoxItem Content="user"/>
 		</ComboBox>

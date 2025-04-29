@@ -38,7 +38,7 @@
 	<StackPanel Margin="20">
 		
 
-		<!-- Search and Add User Controls -->
+	
 		
 		<TextBlock FontSize="24"
                    FontFamily="{DynamicResource RobotoM}"
@@ -65,15 +65,25 @@
 			
 			<Rectangle Fill="Transparent" Width="170"/>
 
-			
+			<StackPanel Spacing="5">
 			<Button Content="Add User"
 					
 					Foreground="White"
 					 Command="{Binding AddUserCommand}"
 					Background="{DynamicResource AccClr}"
 					Width="120"
+					
 					HorizontalAlignment="Right"/>
+			<Button Content="Try Log in"
+					Foreground="Black"
+					 Command="{Binding AddUserCommand}"
+					Background="White"
+					Width="120"
+				Margin="0,0,0,0"
+					HorizontalAlignment="Right"/>
+			</StackPanel>
 		</StackPanel>
+		
 
 		<DataGrid Margin="20"
                   ItemsSource="{Binding Users}"

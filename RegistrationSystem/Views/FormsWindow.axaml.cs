@@ -21,6 +21,9 @@ public partial class FormsWindow : Window
     }
     private void OnAddButtonClicked(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
+        var selectedItem = RoleComboBox.SelectedItem as ComboBoxItem;
+        string selectedRole = selectedItem?.Content?.ToString() ?? "user";
+
         if (string.IsNullOrWhiteSpace(UserName.Text))
         {
             Debug.WriteLine("Username is required!");
@@ -32,10 +35,11 @@ public partial class FormsWindow : Window
         {
             FirstName = FirstName.Text,
             LastName = LastName.Text,
+            MiddleName = MiddleName.Text,
             UserName = UserName.Text,
             Email = Email.Text,
-            Role = "user", // Default role for new user
-            Password = "jhunreyCute" // You can implement a password field if you need
+            Role = selectedRole, 
+            Password = Password.Text 
         };
 
         Debug.WriteLine($"Creating user: {NewUser.UserName}");

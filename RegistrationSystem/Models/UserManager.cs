@@ -9,12 +9,18 @@ namespace RegistrationSystem.Models
 {
    public class UserManager
     {
+
+        private static UserManager _instance;
+        public static UserManager Instance => _instance ??= new UserManager();
+
         private List<Userdb> users;
         private int IdCounter = 1;
+
         public UserManager() {
 
             users = new List<Userdb>();
             Admin();
+            LoadDummyUsers();
 
         }
         public void Admin()
@@ -130,6 +136,9 @@ namespace RegistrationSystem.Models
             AddUser("Jarren", "Garcia", "Canasa", "jarrengarcia_", "4143", "jarrengarcia@gmail.com", "user");
             AddUser("No", "", "MiddleName", "jarrengarcia_", "4143", "joshuaGarcia@gmail.com", "user");
         }
-    
+        public bool UsernameExists(string username)
+        {
+            return users.Any(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RegistrationSystem.Models;
-using RegistrationSystem.Views;
+using MsBox.Avalonia;
+using System.Text.RegularExpressions;
+using MsBox.Avalonia.Enums;
 
 
 
@@ -23,11 +23,11 @@ namespace RegistrationSystem.ViewModels
     {
         public ObservableCollection<Userdb> Users {get;}
         private readonly List<Userdb> _allUsers = new();
-        private readonly UserManager userManager = new UserManager();
+        private readonly UserManager userManager = UserManager.Instance;
 
 
 
-       
+
 
         [ObservableProperty]
         private string _searchText = string.Empty;
@@ -70,6 +70,24 @@ namespace RegistrationSystem.ViewModels
 
             if (result != null)
             {
+
+                if (!IsValidEmail(result.Email))
+                {
+
+
+                    var box = MessageBoxManager
+           .GetMessageBoxStandard("Invalid Email", "Please Provide Valid Email", ButtonEnum.Ok);
+                    _ = await box.ShowAsync();
+
+                    return;
+                }
+                if (userManager.UsernameExists(result.UserName))
+                {
+                    var box = MessageBoxManager
+                       .GetMessageBoxStandard("Duplicate Username", "This username already exists.", ButtonEnum.Ok);
+                    await box.ShowAsync();
+                    return;
+                }
                 Users.Add(result);
                 userManager.AddUserFromObject(result); 
                 userManager.ListAllUser();
@@ -129,9 +147,16 @@ namespace RegistrationSystem.ViewModels
         }
         partial void OnSearchTextChanged(string value)
         {
-            // Optional: Trigger search automatically when text changes
+         
             SearchCommand.Execute(null);
         }
+
+        public static bool IsValidEmail(string email)
+        {
+            var pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
+        }
+
 
 
     }

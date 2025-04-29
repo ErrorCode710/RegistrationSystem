@@ -42,7 +42,7 @@
 				<TextBlock TextAlignment="Center" Text="Jhun Rey Canasa" Margin="10" Foreground="White" FontFamily="{DynamicResource RobotoR}" FontSize="12"></TextBlock>
 					
 				</StackPanel>
-		<!--	<Button Command="{Binding TriggerPaneCommand}"> - </Button> -->
+		
 			<ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedListItem}" Width="200">
 				<ListBox.ItemTemplate>
 					<DataTemplate DataType="{x:Type vm:ListItemTemplate}">
