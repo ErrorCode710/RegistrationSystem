@@ -8,6 +8,8 @@ using System.Security.Cryptography.X509Certificates;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using System.Threading.Tasks;
+using Avalonia.Controls.ApplicationLifetimes;
+using System.Linq;
 
 namespace RegistrationSystem.Views;
 
@@ -55,7 +57,7 @@ public partial class LogInWindow : AppWindow
                 onLoginSucces(firstName, lastName, middleName, userName, email, password, role);
             }
             else {
-                onLoginSucces(firstName, lastName, middleName, userName, email, password, role);
+                 onLoginSucces(firstName, lastName, middleName, userName, email, password, role);
             }
         
         } else
@@ -69,20 +71,38 @@ public partial class LogInWindow : AppWindow
        
         
     }
-    private void onLoginSucces(string firstname ,string lastname, string middlename, string username, string email, string password, string Role)
+    private void onLoginSucces(string firstname, string lastname, string middlename, string username, string email, string password, string role)
     {
-         if(Role == "admin") {
-            var mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
-        } else
+        // Check if MainWindow is already open
+        var existingMainWindow = Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
+            ? desktop.Windows.FirstOrDefault(w => w is MainWindow)
+            : null;
+
+        if (role == "admin")
         {
-            var mainWindow = new UserInfo(firstname, username, middlename, username,email,password);
-            mainWindow.Show();
+            if (existingMainWindow != null)
+            {
+                Debug.WriteLine("MainWindow is already open.");
+                var userWindow = new UserInfo(firstname, username, middlename, username, email, password);
+                userWindow.Show();
+
+            }
+            else
+            {
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
+                Debug.WriteLine("MainWindow opened.");
+            }
+
             this.Close();
         }
-        // if the user is addmin show this admin panel if not show the log in sucess page and box
-        
+        else
+        {
+            var userWindow = new UserInfo(firstname, username, middlename, username, email, password);
+            userWindow.Show();
+            Debug.WriteLine("UserInfo window opened.");
+            this.Close();
+        }
     }
-   
+
 }

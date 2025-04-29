@@ -14,6 +14,8 @@ using RegistrationSystem.Models;
 using MsBox.Avalonia;
 using System.Text.RegularExpressions;
 using MsBox.Avalonia.Enums;
+using RegistrationSystem.Views;
+using Avalonia.Controls.ApplicationLifetimes;
 
 
 
@@ -44,11 +46,13 @@ namespace RegistrationSystem.ViewModels
             userManager.ListAllUser();
 
 
-           
 
 
+            
 
         }
+        
+
         [RelayCommand]
         public async Task AddUserAsync()
         {

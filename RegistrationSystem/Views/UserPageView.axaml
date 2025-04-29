@@ -75,8 +75,8 @@
 					
 					HorizontalAlignment="Right"/>
 			<Button Content="Try Log in"
-					Foreground="Black"
-					 Command="{Binding AddUserCommand}"
+					 Name="TryLogInButton"
+        Click="TryLogInButton_Click"
 					Background="White"
 					Width="120"
 				Margin="0,0,0,0"
