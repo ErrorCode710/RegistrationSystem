@@ -88,13 +88,14 @@
 		<DataGrid Margin="20"
                   ItemsSource="{Binding Users}"
                   AutoGenerateColumns="False"
-                  IsReadOnly="True"
+                 
                   BorderThickness="1"
                   BorderBrush="Gray"
                   HorizontalAlignment="Stretch"
                   GridLinesVisibility="Horizontal"
                   FontFamily="{DynamicResource RobotoR}"
-                  RowBackground="Transparent">
+                  RowBackground="Transparent"
+				   x:Name="UserGrid">
 
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="*"/>
@@ -111,7 +112,7 @@
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal" Spacing="5">
 								<Button Content="Edit"
-										
+											Click ="EditButton_Click"
 										Width="60"/>
 								<Button Content="Delete" Classes="danger"
     Command="{Binding Path=((vm:UserPageViewModel)DataContext).DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"

@@ -140,5 +140,33 @@ namespace RegistrationSystem.Models
         {
             return users.Any(u => u.UserName.Equals(username, StringComparison.OrdinalIgnoreCase));
         }
+        public void UpdateUser(Userdb updatedUser)
+        {
+            // Find the user by their Id
+            var existingUser = users.FirstOrDefault(u => u.Id == updatedUser.Id);
+
+            if (existingUser != null)
+            {
+                // Update the existing user's properties
+                existingUser.FirstName = updatedUser.FirstName;
+                existingUser.LastName = updatedUser.LastName;
+                existingUser.MiddleName = updatedUser.MiddleName;
+                existingUser.UserName = updatedUser.UserName;
+                existingUser.Password = updatedUser.Password;
+                existingUser.Email = updatedUser.Email;
+                existingUser.Role = updatedUser.Role;
+
+                Debug.WriteLine($"Updated user: {existingUser.UserName} (ID: {existingUser.Id})");
+            }
+            else
+            {
+                Debug.WriteLine($"User with ID {updatedUser.Id} not found.");
+            }
+        }
+
+        public int GetTotalUsers()
+        {
+            return users?.Count ?? 0;
+        }
     }
 }

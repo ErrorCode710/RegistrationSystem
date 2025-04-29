@@ -8,60 +8,74 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="RegistrationSystem"
-		ExtendClientAreaToDecorationsHint="True">
+        ExtendClientAreaToDecorationsHint="True">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
 
 	<SplitView IsPaneOpen="{Binding IsPaneOpen}"
-			   OpenPaneLength="200"
-			   CompactPaneLength="48"
-			   DisplayMode="CompactInline"
-			   Background="{DynamicResource AccClr}"
-			   PaneBackground="{DynamicResource AccClr}"
-			   >
-		<SplitView.Pane> 
-			<StackPanel Spacing="5" HorizontalAlignment="Center" Margin="40"
-						>
-				<StackPanel>
+               OpenPaneLength="200"
+               CompactPaneLength="48"
+               DisplayMode="CompactInline"
+               Background="{DynamicResource AccClr}"
+               PaneBackground="{DynamicResource AccClr}">
+
+		<SplitView.Pane>
+			<Grid Margin="40" RowDefinitions="Auto,*,Auto">
+				<!-- Profile section -->
+				<StackPanel Spacing="5" HorizontalAlignment="Center" Grid.Row="0">
 					<Border Background="White" Width="85" Height="85" CornerRadius="40">
 						<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-							
-							<Border Background="Pink" Width="30" Height="30" CornerRadius="15" HorizontalAlignment="Center" Margin="0,5,0,0">
-								
-							</Border>
-						
-							<Border Background="Pink" Width="50" Height="40" CornerRadius="25" HorizontalAlignment="Center" Margin="0,5,0,0">
-								
-							</Border>
+							<Border Background="Pink" Width="30" Height="30" CornerRadius="15" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+							<Border Background="Pink" Width="50" Height="40" CornerRadius="25" HorizontalAlignment="Center" Margin="0,5,0,0"/>
 						</StackPanel>
 					</Border>
-				<TextBlock TextAlignment="Center" Text="Jhun Rey Canasa" Margin="10" Foreground="White" FontFamily="{DynamicResource RobotoR}" FontSize="12"></TextBlock>
-					
+					<TextBlock TextAlignment="Center"
+							   x:Name="UserNameText"
+                                Text="{Binding LoggedInUsername}"
+                               Margin="10"
+                               Foreground="White"
+                               FontFamily="{DynamicResource RobotoR}"
+                               FontSize="12"/>
 				</StackPanel>
-		
-			<ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedListItem}" Width="200">
-				<ListBox.ItemTemplate>
-					<DataTemplate DataType="{x:Type vm:ListItemTemplate}">
-						<StackPanel Spacing="15" Orientation="Horizontal">
-							<PathIcon Data="{Binding ListItemIcon} " Foreground="White"></PathIcon>
-							<TextBlock Text="{Binding Label}" Foreground="White" FontFamily="{DynamicResource RobotoR}"></TextBlock>
-						</StackPanel>
-					</DataTemplate>
-				</ListBox.ItemTemplate>
-				
-			</ListBox>
-			</StackPanel>
+
+				<!-- Navigation list -->
+				<ListBox ItemsSource="{Binding Items}"
+                         SelectedItem="{Binding SelectedListItem}"
+                         Width="200"
+                         Grid.Row="1">
+					<ListBox.ItemTemplate>
+						<DataTemplate DataType="{x:Type vm:ListItemTemplate}">
+							<StackPanel Spacing="15" Orientation="Horizontal">
+								<PathIcon Data="{Binding ListItemIcon}" Foreground="White"/>
+								<TextBlock Text="{Binding Label}"
+                                           Foreground="White"
+                                           FontFamily="{DynamicResource RobotoR}"/>
+							</StackPanel>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+
+				<!-- Log out button pinned to bottom -->
+				<StackPanel Spacing="15" Orientation="Horizontal" Grid.Row="2" Margin="0,20,0,0">
+					<PathIcon Data="{DynamicResource sign_out_regular}" Foreground="White"/>
+					<Button Content="Log Out"
+							    Click="OnLogoutButtonClick"
+                               Foreground="White"
+								Background="Transparent"
+							BorderBrush="Transparent"
+                               FontFamily="{DynamicResource RobotoR}"/>
+				</StackPanel>
+			</Grid>
 		</SplitView.Pane>
+
 		<SplitView.Content>
-			<Border CornerRadius="12, 0, 0, 0"
-					Background="White">
-				<TransitioningContentControl Content="{Binding CurrentPage}"></TransitioningContentControl>
+			<Border CornerRadius="12, 0, 0, 0" Background="White">
+				<TransitioningContentControl Content="{Binding CurrentPage}"/>
 			</Border>
 		</SplitView.Content>
 	</SplitView>
-
 </Window>

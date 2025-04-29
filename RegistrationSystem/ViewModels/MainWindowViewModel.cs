@@ -10,6 +10,10 @@ namespace RegistrationSystem.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
+
+        [ObservableProperty]
+        private string _loggedInUsername = "Guest";
+       
         [ObservableProperty]
         private bool _isPaneOpen = true;
 

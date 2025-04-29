@@ -9,7 +9,7 @@
 		<Grid RowDefinitions="*,2.5*">
 			<Grid Grid.Row="0" Background="#ececec">
 				
-					<TextBlock Text="Welcome back, Jhunrey" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontFamily="{DynamicResource RobotoR}" FontSize="15"></TextBlock>
+					<TextBlock Text="Welcome back, Admin" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" FontFamily="{DynamicResource RobotoR}" FontSize="15"></TextBlock>
 				
 			</Grid>
 			<Grid  Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="200">
@@ -17,7 +17,7 @@
 			
 				</Border>
 				<TextBlock Text="Total User" Foreground="White" FontSize="24" TextAlignment="Center" Margin="20"> </TextBlock>
-				<TextBlock Text="15" Foreground="White" FontSize="24" TextAlignment="Center" VerticalAlignment="Bottom" Margin="20"> </TextBlock>
+				<TextBlock x:Name="Totaluser" Text="15" Foreground="White" FontSize="24" TextAlignment="Center" VerticalAlignment="Bottom" Margin="20"> </TextBlock>
 
 				<PathIcon Data="{DynamicResource person_regular}" Width="50" Height="120" Foreground="white"></PathIcon>
 				

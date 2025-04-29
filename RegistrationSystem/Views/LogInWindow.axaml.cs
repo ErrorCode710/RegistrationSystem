@@ -10,6 +10,7 @@ using MsBox.Avalonia.Enums;
 using System.Threading.Tasks;
 using Avalonia.Controls.ApplicationLifetimes;
 using System.Linq;
+using RegistrationSystem.ViewModels;
 
 namespace RegistrationSystem.Views;
 
@@ -73,7 +74,8 @@ public partial class LogInWindow : AppWindow
     }
     private void onLoginSucces(string firstname, string lastname, string middlename, string username, string email, string password, string role)
     {
-        // Check if MainWindow is already open
+        
+        
         var existingMainWindow = Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop
             ? desktop.Windows.FirstOrDefault(w => w is MainWindow)
             : null;
@@ -86,11 +88,19 @@ public partial class LogInWindow : AppWindow
                 var userWindow = new UserInfo(firstname, username, middlename, username, email, password);
                 userWindow.Show();
 
+
             }
             else
             {
+               
                 var mainWindow = new MainWindow();
+                var mainWindowViewModel = new MainWindowViewModel
+                {
+                    LoggedInUsername = username 
+                };
+                mainWindow.DataContext = mainWindowViewModel;
                 mainWindow.Show();
+
                 Debug.WriteLine("MainWindow opened.");
             }
 

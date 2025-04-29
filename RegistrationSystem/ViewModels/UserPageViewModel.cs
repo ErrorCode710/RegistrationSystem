@@ -4,8 +4,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -16,6 +14,7 @@ using System.Text.RegularExpressions;
 using MsBox.Avalonia.Enums;
 using RegistrationSystem.Views;
 using Avalonia.Controls.ApplicationLifetimes;
+using System.Windows.Input;
 
 
 
@@ -25,6 +24,9 @@ namespace RegistrationSystem.ViewModels
     {
         public ObservableCollection<Userdb> Users {get;}
         private readonly List<Userdb> _allUsers = new();
+        public bool IsEditing { get; set; }
+
+        public ICommand ToggleEditCommand { get; }
         private readonly UserManager userManager = UserManager.Instance;
 
 
@@ -36,8 +38,8 @@ namespace RegistrationSystem.ViewModels
 
 
         public UserPageViewModel() {
-           
 
+            ToggleEditCommand = new RelayCommand(() => IsEditing = !IsEditing);
             Users = new ObservableCollection<Userdb>(userManager.GetAllUsers());
             
 
@@ -118,8 +120,18 @@ namespace RegistrationSystem.ViewModels
                
             });
         }
-        
-        
+        [RelayCommand]
+        public void SaveUser(Userdb user)
+        {
+            // Here, you would save the updated user data, e.g., to your database or collection
+            userManager.UpdateUser(user); // Assuming you have this method in your UserManager
+
+            // You can also notify the user of success or failure
+            var box = MessageBoxManager
+                .GetMessageBoxStandard("User Updated", "User details have been successfully updated.", ButtonEnum.Ok);
+            _ = box.ShowAsync();
+        }
+
         [RelayCommand]
         private void Search()
         {
