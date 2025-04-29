@@ -36,12 +36,12 @@ namespace RegistrationSystem.Models
                 users.Add(newUser);
             }
         }
-        public void AddUser(string firstName, string lastName, string middleName,string userName, string password, string email)
+        public void AddUser(string firstName, string lastName, string middleName,string userName, string password, string email,string role)
         {
             var newUser = new Userdb
             {
                 Id = IdCounter++,
-                Role = "user",
+                Role = role,
                 FirstName = firstName,
                 LastName = lastName,
                 MiddleName = middleName,
@@ -52,6 +52,25 @@ namespace RegistrationSystem.Models
 
             users.Add(newUser);
             
+        }
+
+        public void AddUserFromObject(Userdb user)
+        {
+            
+            var newUser = new Userdb
+            {
+                Id = IdCounter++,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                MiddleName = user.MiddleName,
+                UserName = user.UserName,
+                Password = user.Password ?? "defaultPassword",
+                Email = user.Email,
+                Role = user.Role ?? "user" 
+            };
+
+            users.Add(newUser);
+            Debug.WriteLine($"Added new user: {newUser.UserName} (ID: {newUser.Id})");
         }
 
         public void DeleteUser(int UserId)
@@ -100,5 +119,17 @@ namespace RegistrationSystem.Models
         {
             return users;
         }
+
+       
+        public void LoadDummyUsers()
+        {
+
+           
+            AddUser("Joshua", "Garcia", "Canasa", "garciajoshuae", "4143", "joshuaGarcia@gmail.com", "user");
+            AddUser("Daniel", "Padilla", "Canasa", "supremo_dp", "4143", "supremoDj@gmail.com", "user");
+            AddUser("Jarren", "Garcia", "Canasa", "jarrengarcia_", "4143", "jarrengarcia@gmail.com", "user");
+            AddUser("No", "", "MiddleName", "jarrengarcia_", "4143", "joshuaGarcia@gmail.com", "user");
+        }
+    
     }
 }

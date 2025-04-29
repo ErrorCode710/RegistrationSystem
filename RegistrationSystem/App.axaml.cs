@@ -7,8 +7,7 @@ using Avalonia.Markup.Xaml;
 using RegistrationSystem.ViewModels;
 using RegistrationSystem.Views;
 using System;
- 
-
+using RegistrationSystem.Models;
 namespace RegistrationSystem;
 
 public partial class App : Application
@@ -37,11 +36,13 @@ public partial class App : Application
             // some how if this is possible after the log in page 
             //is pass a true value the mainWindow will run 
             // and the log in page will close
-
             
+
             var login = desktop.MainWindow = new LogInWindow();
             login.Show();
-            
+            var userManager = new UserManager();
+            userManager.LoadDummyUsers();
+
         }
 
         base.OnFrameworkInitializationCompleted();

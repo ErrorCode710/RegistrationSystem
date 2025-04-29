@@ -24,14 +24,56 @@
 			<Setter Property="FontFamily" Value="{DynamicResource RobotR}"></Setter>
 			
 		</Style>
+		<Style Selector="Button">
+			<Setter Property="Padding" Value="5"/>
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+
+		<Style Selector="Button.danger">
+			<Setter Property="Background" Value="#FFEBEE"/>
+			<Setter Property="Foreground" Value="#D32F2F"/>
+		</Style>
 	</UserControl.Styles>
 
 	<StackPanel Margin="20">
+		
+
+		<!-- Search and Add User Controls -->
+		
 		<TextBlock FontSize="24"
                    FontFamily="{DynamicResource RobotoM}"
                    Text="User Management"
                    TextAlignment="Center"
                    Margin="0,0,0,20"/>
+		<StackPanel Orientation="Horizontal"
+					HorizontalAlignment="Stretch"
+					Margin="0,0,0,15"
+					Spacing="10">
+			
+			<TextBox Watermark="Search users..."
+					 Width="300"
+					 FontSize="12"
+					 Margin="20,0"
+			Text="{Binding SearchText, Mode=TwoWay}"
+					/>
+
+			
+			<Button Content="Search"
+					Command="{Binding SearchCommand}"
+					Width="80"/>
+
+			
+			<Rectangle Fill="Transparent" Width="170"/>
+
+			
+			<Button Content="Add User"
+					
+					Foreground="White"
+					 Command="{Binding AddUserCommand}"
+					Background="{DynamicResource AccClr}"
+					Width="120"
+					HorizontalAlignment="Right"/>
+		</StackPanel>
 
 		<DataGrid Margin="20"
                   ItemsSource="{Binding Users}"
@@ -61,7 +103,7 @@
 								<Button Content="Edit"
 										
 										Width="60"/>
-								<Button Content="Delete"
+								<Button Content="Delete" Classes="danger"
     Command="{Binding Path=((vm:UserPageViewModel)DataContext).DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
     CommandParameter="{Binding}"
     Width="60"/>

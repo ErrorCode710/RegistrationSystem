@@ -12,4 +12,6 @@ public partial class UserPageView : UserControl
         InitializeComponent();
         DataContext = new UserPageViewModel();
     }
+
+
 }
