@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Avalonia.Threading;
 using ReactiveUI;
 using RegistrationSystem.Models;
 
@@ -34,9 +35,14 @@ namespace RegistrationSystem.ViewModels
 
             DeleteCommand = ReactiveCommand.Create<Userdb>(user =>
             {
-                Debug.WriteLine($"Deleting user: {user?.UserName ?? "null"}");
-                if (user != null) Users.Remove(user);
+             
                 //Users.Remove(user);
+
+                Dispatcher.UIThread.Post(() =>
+                {
+                    Debug.WriteLine($"Deleting user: {user?.UserName ?? "null"}");
+                    if (user != null) Users.Remove(user);
+                });
             });
                
 

@@ -62,8 +62,10 @@
 										
 										Width="60"/>
 								<Button Content="Delete"
-       
-        Width="60"/>
+    Command="{Binding Path=((vm:UserPageViewModel)DataContext).DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+    CommandParameter="{Binding}"
+    Width="60"/>
+
 
 							</StackPanel>
 						</DataTemplate>
