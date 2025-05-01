@@ -12,8 +12,6 @@ using RegistrationSystem.Models;
 using MsBox.Avalonia;
 using System.Text.RegularExpressions;
 using MsBox.Avalonia.Enums;
-using RegistrationSystem.Views;
-using Avalonia.Controls.ApplicationLifetimes;
 using System.Windows.Input;
 
 
@@ -123,10 +121,10 @@ namespace RegistrationSystem.ViewModels
         [RelayCommand]
         public void SaveUser(Userdb user)
         {
-            // Here, you would save the updated user data, e.g., to your database or collection
-            userManager.UpdateUser(user); // Assuming you have this method in your UserManager
+            
+            userManager.UpdateUser(user);
 
-            // You can also notify the user of success or failure
+           
             var box = MessageBoxManager
                 .GetMessageBoxStandard("User Updated", "User details have been successfully updated.", ButtonEnum.Ok);
             _ = box.ShowAsync();

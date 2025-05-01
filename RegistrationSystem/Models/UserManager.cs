@@ -76,6 +76,9 @@ namespace RegistrationSystem.Models
             };
 
             users.Add(newUser);
+
+            Debug.WriteLine($"Updates Userlist");
+            ListAllUser();
             Debug.WriteLine($"Added new user: {newUser.UserName} (ID: {newUser.Id})");
         }
 
@@ -134,7 +137,7 @@ namespace RegistrationSystem.Models
             AddUser("Joshua", "Garcia", "Canasa", "garciajoshuae", "4143", "joshuaGarcia@gmail.com", "user");
             AddUser("Daniel", "Padilla", "Canasa", "supremo_dp", "4143", "supremoDj@gmail.com", "user");
             AddUser("Jarren", "Garcia", "Canasa", "jarrengarcia_", "4143", "jarrengarcia@gmail.com", "user");
-            AddUser("No", "", "MiddleName", "jarrengarcia_", "4143", "joshuaGarcia@gmail.com", "user");
+           
         }
         public bool UsernameExists(string username)
         {
@@ -142,12 +145,12 @@ namespace RegistrationSystem.Models
         }
         public void UpdateUser(Userdb updatedUser)
         {
-            // Find the user by their Id
+            Debug.WriteLine($"Updated user: JHUNREY!@3");
             var existingUser = users.FirstOrDefault(u => u.Id == updatedUser.Id);
 
             if (existingUser != null)
             {
-                // Update the existing user's properties
+                
                 existingUser.FirstName = updatedUser.FirstName;
                 existingUser.LastName = updatedUser.LastName;
                 existingUser.MiddleName = updatedUser.MiddleName;
@@ -156,7 +159,7 @@ namespace RegistrationSystem.Models
                 existingUser.Email = updatedUser.Email;
                 existingUser.Role = updatedUser.Role;
 
-                Debug.WriteLine($"Updated user: {existingUser.UserName} (ID: {existingUser.Id})");
+                Debug.WriteLine($"Updated user: {existingUser.UserName} (ID: {updatedUser.LastName})");
             }
             else
             {

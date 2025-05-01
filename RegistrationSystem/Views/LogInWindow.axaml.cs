@@ -35,9 +35,10 @@ public partial class LogInWindow : AppWindow
         // we need to create an indicator if th
         string inputUserName = UserName.Text;
         string inputPassword = Password.Text;
-        
 
-        var userValid = new UserManager();
+
+        //var userValid = new UserManager();
+        var userValid = UserManager.Instance;
         var user = userValid.GetUser(inputUserName, inputPassword);
 
         string email = user?.Email;
@@ -66,6 +67,8 @@ public partial class LogInWindow : AppWindow
             var box = MessageBoxManager
           .GetMessageBoxStandard("Caption", "Login Invalid Please Try Again",
               ButtonEnum.Ok);
+
+
 
             var result = await box.ShowAsync();
         }

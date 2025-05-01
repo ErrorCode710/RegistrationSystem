@@ -8,19 +8,7 @@ using System.Threading.Tasks;
 
 namespace RegistrationSystem.Models
 {
-    //js 
-
-    // class User {
-    //constructor  {
-    //role: Admin or User
-    // Last name 
-    // FIrst Name
-    // User Name
-    // Middle Name
-    // Username
-    // Password and email
-    //}
-    // }
+  
    public class Userdb
     {
         public string Role { get; set; }

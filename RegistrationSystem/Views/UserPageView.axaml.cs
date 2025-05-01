@@ -32,7 +32,7 @@ public partial class UserPageView : UserControl
 
             if (btn.Content.ToString() == "Edit")
             {
-                // Switch to edit mode
+                
                 UserGrid.SelectedItem = selectedUser;
                 UserGrid.BeginEdit();
 
@@ -40,9 +40,9 @@ public partial class UserPageView : UserControl
             }
             else if (btn.Content.ToString() == "Save")
             {
-                // Save logic
-                var userManager = new UserManager();
-                userManager.UpdateUser(selectedUser); // assumes this commits to DB or collection
+
+               
+                UserManager.Instance.UpdateUser(selectedUser);
 
                 UserGrid.CommitEdit();
                 btn.Content = "Edit";
